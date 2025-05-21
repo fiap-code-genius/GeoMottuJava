@@ -1,5 +1,6 @@
 package br.com.fiap.geomottu.model.entities;
 
+import br.com.fiap.geomottu.dto.filial.FilialDto;
 import br.com.fiap.geomottu.model.enums.PaisesFilial;
 import jakarta.persistence.*;
 
@@ -53,6 +54,15 @@ public class Filial {
         this.telefone = telefone;
         this.email = email;
         this.usuarios = usuarios;
+    }
+
+    public Filial(FilialDto json) {
+        this.nome = json.nome();
+        this.pais = json.pais();
+        this.endereco = new Endereco(json.endereco());
+        this.telefone = json.telefone();
+        this.email = json.email();
+        this.usuarios = json.usuarios();
     }
 
     //Getters and Setters

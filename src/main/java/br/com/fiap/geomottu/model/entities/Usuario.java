@@ -1,5 +1,6 @@
 package br.com.fiap.geomottu.model.entities;
 
+import br.com.fiap.geomottu.dto.usuario.UsuarioDto;
 import jakarta.persistence.*;
 
 @Entity
@@ -39,6 +40,13 @@ public class Usuario {
         this.nome = nome;
         this.senha = senha;
         this.tipoPerfil = tipoPerfil;
+        this.filial = filial;
+    }
+
+    public Usuario(UsuarioDto json, Filial filial) {
+        this.nome = json.nome();
+        this.senha = json.senha();
+        this.tipoPerfil = json.tipoPerfil();
         this.filial = filial;
     }
 
