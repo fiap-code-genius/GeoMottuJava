@@ -40,7 +40,7 @@ public class PatioService {
         if (patio.isPresent()) {
             Patio p = patio.get();
             return new PatioGetDto(p.getId(), p.getNome(), p.getCapacidadeTotal(),
-                    p.getFilial().getId(), p.getMotos().stream().map(Moto::getId).toList());
+                    p.getFilial().getId(), p.getMotos().stream().map(Moto::getPlaca).toList());
         } else {
             return null;
         }

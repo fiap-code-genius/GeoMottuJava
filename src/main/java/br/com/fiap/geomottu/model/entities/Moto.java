@@ -1,5 +1,6 @@
 package br.com.fiap.geomottu.model.entities;
 
+import br.com.fiap.geomottu.dto.moto.MotoDto;
 import br.com.fiap.geomottu.model.enums.EstadoMoto;
 import br.com.fiap.geomottu.model.enums.TipoMoto;
 import jakarta.persistence.*;
@@ -27,7 +28,7 @@ public class Moto {
     @Column(name = "st_operacional", nullable = false)
     private EstadoMoto estadoMoto;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_patio")
     private Patio patio;
 
@@ -48,6 +49,14 @@ public class Moto {
         this.chassi = chassi;
         this.tipoMoto = tipoMoto;
         this.estadoMoto = estadoMoto;
+    }
+
+    public Moto(MotoDto dto, Patio patio) {
+        this.placa = dto.placa();
+        this.chassi = dto.chassi();
+        this.tipoMoto = dto.tipoMoto();
+        this.estadoMoto = dto.estadoMoto();
+        this.patio = patio;
     }
 
     public Long getId() {

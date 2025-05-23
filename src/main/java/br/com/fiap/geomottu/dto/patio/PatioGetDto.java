@@ -10,11 +10,11 @@ public record PatioGetDto(
         String nome,
         Integer capacidadeTotal,
         Long filialId,
-        List<Long> motos
+        List<String> motos
 
 ) {
     public PatioGetDto(Patio patio) {
         this(patio.getId(), patio.getNome(), patio.getCapacidadeTotal(),
-                patio.getFilial().getId(), patio.getMotos().stream().map(Moto::getId).toList());
+                patio.getFilial().getId(), patio.getMotos().stream().map(Moto::getPlaca).toList());
     }
 }

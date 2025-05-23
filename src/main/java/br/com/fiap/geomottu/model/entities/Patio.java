@@ -24,7 +24,7 @@ public class Patio {
     @JoinColumn(name = "id_filial")
     private Filial filial;
 
-    @OneToMany(mappedBy = "patio", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "patio", fetch = FetchType.EAGER)
     private List<Moto> motos;
 
     public Patio() {}
