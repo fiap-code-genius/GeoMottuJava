@@ -1,6 +1,7 @@
 package br.com.fiap.geomottu.dto.filial;
 
 import br.com.fiap.geomottu.dto.endereco.EnderecoDto;
+import br.com.fiap.geomottu.model.entities.Patio;
 import br.com.fiap.geomottu.model.entities.Usuario;
 import br.com.fiap.geomottu.model.enums.PaisesFilial;
 import jakarta.validation.Valid;
@@ -23,7 +24,8 @@ public record FilialDto(
         @Email(message = "O formato de email está incorreto")
         @Size(max = 30, message = "O máximo de caracteres do email deve ser 30")
         String email,
-        List<Usuario> usuarios
+        List<Usuario> usuarios,
+        List<Patio> patios
 
 ) {
 }

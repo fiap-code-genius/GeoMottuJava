@@ -3,6 +3,7 @@ package br.com.fiap.geomottu.service;
 import br.com.fiap.geomottu.dto.filial.FilialDto;
 import br.com.fiap.geomottu.dto.filial.FilialGetDto;
 import br.com.fiap.geomottu.model.entities.Filial;
+import br.com.fiap.geomottu.model.entities.Patio;
 import br.com.fiap.geomottu.model.entities.Usuario;
 import br.com.fiap.geomottu.repository.FilialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class FilialService {
             Filial f = filial.get();
             return new FilialGetDto(f.getId(), f.getNome(), f.getPais(), f.getEndereco(),
                     f.getTelefone(), f.getEmail(), f.getUsuarios()
-                    .stream().map(Usuario::getNome).toList());
+                    .stream().map(Usuario::getNome).toList(),
+                    f.getPatios().stream().map(Patio::getNome).toList());
         } else {
             return null;
         }

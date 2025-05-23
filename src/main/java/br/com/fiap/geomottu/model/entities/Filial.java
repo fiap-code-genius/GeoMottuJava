@@ -34,6 +34,9 @@ public class Filial {
     @OneToMany(mappedBy = "filial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
 
+    @OneToMany(mappedBy = "filial", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Patio> patios;
+
     //Construtores
     public Filial() {}
 
@@ -56,6 +59,17 @@ public class Filial {
         this.usuarios = usuarios;
     }
 
+    public Filial(Long id, String nome, PaisesFilial pais, Endereco endereco, String telefone, String email, List<Usuario> usuarios, List<Patio> patios) {
+        this.id = id;
+        this.nome = nome;
+        this.pais = pais;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+        this.usuarios = usuarios;
+        this.patios = patios;
+    }
+
     public Filial(FilialDto json) {
         this.nome = json.nome();
         this.pais = json.pais();
@@ -63,6 +77,7 @@ public class Filial {
         this.telefone = json.telefone();
         this.email = json.email();
         this.usuarios = json.usuarios();
+        this.patios = json.patios();
     }
 
     //Getters and Setters
@@ -120,5 +135,13 @@ public class Filial {
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public List<Patio> getPatios() {
+        return patios;
+    }
+
+    public void setPatios(List<Patio> patios) {
+        this.patios = patios;
     }
 }

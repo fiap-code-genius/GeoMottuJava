@@ -2,6 +2,7 @@ package br.com.fiap.geomottu.dto.filial;
 
 import br.com.fiap.geomottu.model.entities.Endereco;
 import br.com.fiap.geomottu.model.entities.Filial;
+import br.com.fiap.geomottu.model.entities.Patio;
 import br.com.fiap.geomottu.model.entities.Usuario;
 import br.com.fiap.geomottu.model.enums.PaisesFilial;
 
@@ -14,10 +15,12 @@ public record FilialGetDto(
         Endereco endereco,
         String telefone,
         String email,
-        List<String> usuarios
+        List<String> usuarios,
+        List<String> patios
 ) {
     public FilialGetDto(Filial filial) {
         this(filial.getId(), filial.getNome(), filial.getPais(), filial.getEndereco(), filial.getTelefone(),
-                filial.getEmail(), filial.getUsuarios().stream().map(Usuario::getNome).toList());
+                filial.getEmail(), filial.getUsuarios().stream().map(Usuario::getNome).toList(),
+                filial.getPatios().stream().map(Patio::getNome).toList());
     }
 }

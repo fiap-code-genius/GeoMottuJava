@@ -47,7 +47,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     @Transactional
-    public UsuarioGetDto update(@PathVariable Long id, @RequestBody @Valid UsuarioGetDto dto) {
+    public UsuarioGetDto update(@PathVariable Long id, @RequestBody UsuarioGetDto dto) {
         return service.update(id, dto);
     }
 
